@@ -16,18 +16,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-                className={cn(
-                  "min-h-screen bg-background font-sans antialiased",
-                  fontSans.variable
-                )}><SessionWrapper>
-                <ThemeProvider attribute="class" enableSystem={false}>
-                  <NavBar/>
-                  
-        {children}
-        <Toaster />
-        <Footer/>
-        </ThemeProvider>
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+        <SessionWrapper>
+          <ThemeProvider attribute="class" enableSystem={false}>
+            <NavBar/>  
+              {children}
+              <Toaster />
+            <Footer/>
+          </ThemeProvider>
         </SessionWrapper>
       </body>
     </html>

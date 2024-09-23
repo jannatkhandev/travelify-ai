@@ -104,7 +104,7 @@ try {
   // Attempt to clean the response and try again
   const cleanedText = text.replace(/^```json\s*/, '').replace(/\s*```$/, '');
   try {
-    parsedItinerary = ItinerarySchema.parse(JSON.parse(cleanedText));
+    parsedItinerary = JSON.parse(cleanedText);
   } catch (fallbackError) {
     console.error('Failed to parse cleaned JSON:', fallbackError);
     throw new Error('Unable to parse AI response');
