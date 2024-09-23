@@ -74,7 +74,7 @@ function DayPlan({ day }) {
 export function TripDetail({ trip }) {
   const [isCopied, setIsCopied] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState(null);
-  const tripUrl = `https://travelify-ai-tool/trip/${trip.slug}`;
+  const tripUrl = `https://travelify-ai-tool.vercel.app/trip/${trip.slug}`;
 
   const getTravelingWithIcon = () => {
     switch (trip.with?.toLowerCase()) {
