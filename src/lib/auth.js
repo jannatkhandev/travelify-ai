@@ -1,4 +1,4 @@
-
+import GitHubProvider from "next-auth/providers/github";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { db } from "./db";
 import Email from "next-auth/providers/email";
@@ -16,6 +16,10 @@ export const authOptions = {
       },
       from: process.env.EMAIL_FROM,
     }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET
+    })
   ],
   adapter: PrismaAdapter(db),
   pages: {
