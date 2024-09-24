@@ -61,13 +61,13 @@ model Trip {
   id          String     @id @default(cuid())
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
+  with        String
   name        String
   days        Int        @db.SmallInt
   budget      Float
   fromPlace   String
   toPlace     String
   type        TripType
-  with        String     @default("solo")
   slug        String     @unique
   userId      String
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
