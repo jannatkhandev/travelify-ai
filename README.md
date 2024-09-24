@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+![3](https://github.com/user-attachments/assets/4b256d12-6130-48a9-bcc4-4378c1a528ec)
 
-First, run the development server:
+## Travelify AI Trip Planner
+Your personalized itinerary planner powered by AI.
+
+## How to run?
+1. Create a new database at database.new (for DIRECT_URL and DATABASE_URL env variables)
+2. Generate your API key from resend.com (for SMTP_PASSWORD env variable)
+3. You can also generate your GitHub OAuth Client and Secret from Developer settings in your GitHub account.
+4. Then use the above values and create a .env file (sample given below) in root of the folder.
+
+```bash
+GITHUB_CLIENT_ID=yourgithubclientid
+GITHUB_CLIENT_SECRET=yourgithubclientsecret
+SMTP_USER=resend
+SMTP_PASSWORD=yourresendapikey
+SMTP_HOST=smtp.resend.com
+SMTP_PORT=465
+EMAIL_FROM=youremailhandle@yourverifieddomain.xyz
+DIRECT_URL='postgresql://postgres.[projectid]:[password]@aws-0-[aws-region].pooler.supabase.com:5432/postgres'
+DATABASE_URL='postgresql://postgres.[projectid]:[password]@aws-0-[aws-region].pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=3&pool_timeout=30'
+GOOGLE_GEMINI_API_KEY=yourgooglegeminiapikey
+```
+
+5. then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Email me at: jannatkhandev@gmail.com for any questions.
