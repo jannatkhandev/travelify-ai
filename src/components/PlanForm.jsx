@@ -31,7 +31,7 @@ const formSchema = z.object({
     from: z.date(),
     to: z.date(),
   }).refine(data => {
-    if (!data.from || !data.to) return false;
+    if (!data?.from || !data?.to) return false;
     const days = differenceInDays(data.to, data.from);
     return days >= 1 && days <= 10;
   }, {
@@ -142,7 +142,11 @@ export function PlanForm() {
                   <DatePickerWithRange
                     className="w-full"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(newValue) => {
+                      if (newValue && newValue?.from && newValue?.to) {
+                        field.onChange(newValue);
+                      }
+                    }}
                   />
                 </FormControl>
                 <FormMessage />

@@ -1,7 +1,5 @@
-"use client"
-
 import { useEffect, useState, useCallback } from "react"
-import { addDays, format } from "date-fns"
+import { addDays, format, startOfToday } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
 import { DateRange } from "react-day-picker"
 
@@ -19,23 +17,31 @@ export function DatePickerWithRange({
   value,
   onChange,
 }) {
+  const today = startOfToday()
+  
   const [date, setDate] = useState(value || {
-    from: new Date(),
-    to: addDays(new Date(), 7),
+    from: today,
+    to: addDays(today, 7),
   })
 
   useEffect(() => {
-    if (value && (value.from !== date.from || value.to !== date.to)) {
+    if (value && value.from && value.to && (value.from !== date.from || value.to !== date.to)) {
       setDate(value)
     }
   }, [value])
 
   const handleSelect = useCallback((newDate) => {
-    setDate(newDate)
-    if (onChange) {
-      onChange(newDate)
+    if (newDate) {
+      const adjustedDate = {
+        from: newDate.from < today ? today : newDate.from,
+        to: newDate.to
+      }
+      setDate(adjustedDate)
+      if (onChange) {
+        onChange(adjustedDate)
+      }
     }
-  }, [onChange])
+  }, [onChange, today])
 
   return (
     <div className={cn("grid gap-2", className)}>
@@ -72,6 +78,8 @@ export function DatePickerWithRange({
             selected={date}
             onSelect={handleSelect}
             numberOfMonths={2}
+            disabled={{ before: today }}
+            fromDate={today}
           />
         </PopoverContent>
       </Popover>
