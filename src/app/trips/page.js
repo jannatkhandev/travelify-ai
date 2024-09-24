@@ -35,7 +35,7 @@ export default async function Trips() {
         <CardContent>
           {trips.length > 0 ? (<TripsList trips={trips} />
           ) : (
-            <p>You haven't planned any trips yet.</p>
+            <p>You haven't planned any trips yet on Travelify.</p>
           )}
         </CardContent>
       </Card>
