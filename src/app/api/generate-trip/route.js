@@ -155,9 +155,9 @@ export async function POST(req) {
         }
       };
 
-      const res = await db.trip.create({
-          data: tripData
-        });
+      await db.trip.create({
+        data: tripData
+      });
     
       return NextResponse.json({ success: true, slug: slug });
       
