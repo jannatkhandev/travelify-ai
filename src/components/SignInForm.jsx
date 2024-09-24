@@ -1,40 +1,33 @@
-"use client"
-import React from "react";
-import { useForm } from "react-hook-form";
-import { Button } from "./ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "./ui/form";
-import { Input } from "./ui/input";
-import { toast } from "../hooks/use-toast";
-import { signIn } from "next-auth/react";
-import { Mail, GitHub } from "lucide-react";
+'use client';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Button } from './ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from './ui/form';
+import { Input } from './ui/input';
+import { toast } from '../hooks/use-toast';
+import { signIn } from 'next-auth/react';
+import { Mail, Github } from 'lucide-react';
 
 const SignInForm = () => {
   const form = useForm();
 
   function onSubmit(data) {
     try {
-      signIn("email", { email: data.email, redirect: false, callbackUrl: "/plan" });
+      signIn('email', { email: data.email, redirect: false, callbackUrl: '/plan' });
       toast({
-        title: "Email sent successfully!"
+        title: 'Email sent successfully!',
       });
     } catch (error) {
-      console.error("Error sending email", error);
+      console.error('Error sending email', error);
       toast({
-        title: "Error sending email",
-        message: "Please try again later"
+        title: 'Error sending email',
+        message: 'Please try again later',
       });
     }
   }
 
   const handleGitHubSignIn = () => {
-    signIn("github", { callbackUrl: "/plan" });
+    signIn('github', { callbackUrl: '/plan' });
   };
 
   return (
@@ -49,8 +42,16 @@ const SignInForm = () => {
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Input type="email" placeholder="email@domain.com" {...field} className="pl-10" />
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                    <Input
+                      type="email"
+                      placeholder="email@domain.com"
+                      {...field}
+                      className="pl-10"
+                    />
+                    <Mail
+                      className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-400"
+                      size={18}
+                    />
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -72,7 +73,7 @@ const SignInForm = () => {
         </div>
       </div>
       <Button onClick={handleGitHubSignIn} variant="outline" className="w-full">
-        <GitHub className="mr-2" size={18} />
+        <Github className="mr-2" size={18} />
         Login with GitHub
       </Button>
     </div>
